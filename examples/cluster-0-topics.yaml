@@ -1,0 +1,48 @@
+apiVersion: kafka.strimzi.io/v1beta1
+kind: KafkaTopic
+metadata:
+  name: control-data
+  labels:
+    strimzi.io/cluster: cluster-0
+spec:
+  partitions: 8
+  replicas: 2
+  config:
+    cleanup.policy: compact
+    delete.retention.ms: 100
+---
+apiVersion: kafka.strimzi.io/v1beta1
+kind: KafkaTopic
+metadata:
+  name: events-1
+  labels:
+    strimzi.io/cluster: cluster-0
+spec:
+  partitions: 16
+  replicas: 2
+  config:
+    retention.ms: 86400000
+---
+apiVersion: kafka.strimzi.io/v1beta1
+kind: KafkaTopic
+metadata:
+  name: metrics-1
+  labels:
+    strimzi.io/cluster: cluster-0
+spec:
+  partitions: 16
+  replicas: 1
+  config:
+    retention.ms: 86400000
+---
+apiVersion: kafka.strimzi.io/v1beta1
+kind: KafkaTopic
+metadata:
+  name: logs-1
+  labels:
+    strimzi.io/cluster: cluster-0
+spec:
+  partitions: 16
+  replicas: 1
+  config:
+    retention.ms: 86400000
